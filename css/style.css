@@ -12,7 +12,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #001A33;
+    color: #E5E5E5;
+    background: #0D1117;
     overflow-x: hidden;
     padding-top: 100px; /* Adjusted to match fixed header height */
 }
@@ -36,6 +37,13 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Forces emoji to render with natural system colours, not gradient text */
+.flag-emoji {
+    -webkit-text-fill-color: initial;
+    background: none;
+    font-size: 1em;
 }
 
 /* Buttons */
@@ -228,6 +236,8 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: space-between;
 }
+
+
 
 .logo {
     height: 50px;
@@ -657,20 +667,20 @@ section {
 .section-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #003366;
+    color: #FFFFFF;
     margin-bottom: 20px;
 }
 
 .section-subtitle {
     font-size: 1.1rem;
-    color: #4A6582;
+    color: #94A3B8;
     max-width: 600px;
     margin: 0 auto;
 }
 
 /* Why Choose Section */
 .why-choose {
-    background: #F0F8FF;
+    background: #111827;
 }
 
 .features-grid {
@@ -680,14 +690,16 @@ section {
 }
 
 .feature-card {
-    background: #fff;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,187,238,0.15);
     padding: 40px 30px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .feature-card::before {
@@ -696,7 +708,7 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(135deg, #00BBEE, #0055AA);
     transform: scaleX(0);
     transition: transform 0.3s ease;
@@ -708,30 +720,33 @@ section {
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 187, 238, 0.15);
+    border-color: rgba(0,187,238,0.4);
+    background: rgba(0,187,238,0.06);
 }
 
 .feature-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #00BBEE, #0055AA);
+    background: linear-gradient(135deg, rgba(0,187,238,0.2), rgba(0,85,170,0.3));
+    border: 2px solid rgba(0,187,238,0.4);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
     font-size: 24px;
-    color: #003366;
+    color: #00BBEE;
 }
 
 .feature-card h3 {
     font-size: 1.3rem;
     margin-bottom: 15px;
-    color: #003366;
+    color: #FFFFFF;
 }
 
 .feature-card p {
-    color: #4A6582;
+    color: #94A3B8;
     line-height: 1.6;
 }
 
@@ -752,16 +767,18 @@ section {
 }
 
 .product-card {
-    background: #fff;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,187,238,0.15);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 16px 40px rgba(0, 187, 238, 0.18);
+    border-color: rgba(0,187,238,0.4);
 }
 
 .product-image {
@@ -806,24 +823,26 @@ section {
 .product-info h3 {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: #003366;
+    color: #FFFFFF;
 }
 
 .product-info p {
-    color: #4A6582;
+    color: #94A3B8;
     font-size: 0.9rem;
 }
 
 .category-container {
-    background: #fff;
-    padding: 30px 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,187,238,0.15);
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .category-container::before {
@@ -836,6 +855,7 @@ section {
     background: linear-gradient(135deg, #00BBEE, #0055AA);
     transform: scaleX(0);
     transition: transform 0.3s ease;
+    z-index: 2;
 }
 
 .category-container:hover::before {
@@ -843,38 +863,64 @@ section {
 }
 
 .category-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 187, 238, 0.2);
+    border-color: rgba(0,187,238,0.45);
+    background: rgba(0,187,238,0.06);
 }
 
+/* Image-based category icon */
 .category-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #00BBEE, #0055AA);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    font-size: 20px;
-    color: #003366;
-    transition: transform 0.3s ease;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    background: #0D1117;
+    flex-shrink: 0;
 }
 
-.category-container:hover .category-icon {
-    transform: scale(1.1);
+.category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.category-container:hover .category-icon img {
+    transform: scale(1.08);
+}
+
+/* Overlay on hover */
+.category-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 51, 102, 0.25) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.category-container:hover .category-icon::after {
+    opacity: 1;
+}
+
+.category-text {
+    padding: 16px 14px 18px;
 }
 
 .category-container h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    color: #003366;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #FFFFFF;
+    font-weight: 700;
 }
 
 .category-container p {
-    color: #4A6582;
-    font-size: 0.9rem;
+    color: #94A3B8;
+    font-size: 0.82rem;
     line-height: 1.4;
+    margin: 0;
 }
 
 /* Hardware Message Section */
@@ -883,12 +929,13 @@ section {
 }
 
 .message-card {
-    background: linear-gradient(135deg, #003366, #001A33);
+    background: linear-gradient(135deg, #0A1628 0%, #001A33 60%, #0A1628 100%);
     color: white;
     padding: 40px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0,187,238,0.2);
 }
 
 .message-card h3 {
@@ -990,8 +1037,10 @@ section {
 
 /* Quality Section */
 .quality-section {
-    background: #003366;
+    background: linear-gradient(135deg, #0A1628 0%, #001A33 50%, #0A1628 100%);
     color: #fff;
+    border-top: 1px solid rgba(0,187,238,0.15);
+    border-bottom: 1px solid rgba(0,187,238,0.15);
 }
 
 .quality-content {
@@ -1047,7 +1096,7 @@ section {
 
 /* Testimonials */
 .testimonials {
-    background: #F0F8FF;
+    background: #111827;
 }
 
 .testimonials-grid {
@@ -1057,11 +1106,13 @@ section {
 }
 
 .testimonial-card {
-    background: #fff;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,187,238,0.15);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     position: relative;
+    backdrop-filter: blur(10px);
 }
 
 .quote-icon {
@@ -1082,13 +1133,13 @@ section {
 .testimonial-content p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #001A33;
+    color: #CBD5E1;
     margin-bottom: 30px;
     font-style: italic;
 }
 
 .author-info h4 {
-    color: #003366;
+    color: #FFFFFF;
     margin-bottom: 5px;
 }
 
@@ -1538,13 +1589,15 @@ section {
     }
     
     .category-container {
-        padding: 20px 15px;
+        /* no extra padding needed — image fills the top */
     }
     
     .category-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
+        height: 150px;
+    }
+    
+    .category-text {
+        padding: 12px 10px 14px;
     }
     
     .category-container h3 {
@@ -2728,6 +2781,7 @@ section {
 
 .faq-section {
     padding: 80px 0;
+    background: #0D1117;
 }
 
 .faq-grid {
@@ -2735,16 +2789,22 @@ section {
 }
 
 .faq-item {
-    background: white;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,187,238,0.15);
     border-radius: 15px;
     margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
     overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(0,187,238,0.4);
 }
 
 .faq-question {
     padding: 25px 30px;
-    background: #F0F8FF;
+    background: rgba(0,51,102,0.4);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -2753,11 +2813,11 @@ section {
 }
 
 .faq-question:hover {
-    background: #e9ecef;
+    background: rgba(0,187,238,0.12);
 }
 
 .faq-question h3 {
-    color: #003366;
+    color: #FFFFFF;
     font-size: 1.1rem;
 }
 
@@ -2768,12 +2828,14 @@ section {
 
 .faq-answer {
     padding: 0 30px 25px;
-    color: #4A6582;
+    color: #94A3B8;
     line-height: 1.6;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
+
+
 
 /* Responsive adjustments for new pages */
 @media (max-width: 768px) {
